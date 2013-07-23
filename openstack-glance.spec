@@ -1,14 +1,12 @@
-%global milestone 1
-
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.3.b%{milestone}%{?dist}
+Release:          0.4.b2%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/havana/havana-1/+download/glance-2013.2.b1.tar.gz
+Source0:          https://launchpad.net/glance/havana/havana-2/+download/glance-2013.2.b2.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -18,14 +16,12 @@ Source300:        openstack-glance-scrubber.upstart
 Source4:          openstack-glance.logrotate
 
 #
-# patches_base=2013.2.b1
+# patches_base=2013.2.b2
 #
 Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
-
-# EPEL specific
-Patch100:         openstack-glance-newdeps.patch
-Patch101:         crypto.random.patch
-Patch102:         Avoid-NULLs-in-crypto-padding.patch
+Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
+Patch0003: 0003-avoid-the-uneeded-dependency-on-Crypto.Random.patch
+Patch0004: 0004-Avoid-NULLs-in-crypto-padding.patch
 
 BuildArch:        noarch
 BuildRequires:    python2-devel
@@ -75,6 +71,7 @@ Requires:         python-webob1.0
 Requires:         python-crypto
 Requires:         pyxattr
 Requires:         python-swiftclient
+Requires:         python-cinderclient
 Requires:         python-oslo-config
 
 #test deps: python-mox python-nose python-requests
@@ -108,13 +105,13 @@ and delivery services for virtual disk images.
 This package contains documentation files for glance.
 
 %prep
-%setup -q -n glance-%{version}.b%{milestone}
-sed -i 's/%{version}.b%{milestone}/%{version}/' PKG-INFO
+%setup -q -n glance-%{version}.b2
+sed -i 's/%{version}.b2/%{version}/' PKG-INFO
 %patch0001 -p1
+%patch0002 -p1
+%patch0003 -p1
+%patch0004 -p1
 
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
 
 # Remove bundled egg-info
 rm -rf glance.egg-info
@@ -292,6 +289,9 @@ fi
 %doc doc/build/html
 
 %changelog
+* Tue Jul 23 2013 Pádraig Brady <pbrady@redhat.com> 2013.3-0.4.b2
+- Update to Havana milestone 2
+
 * Fri Jun  7 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b1-3
 - reinstate EPEL specific patches
 

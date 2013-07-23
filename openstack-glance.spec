@@ -170,7 +170,7 @@ openstack-config --set etc/glance-registry.conf keystone_authtoken auth_protocol
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 
 # Delete tests
-rm -fr %{buildroot}%{python_sitelib}/tests
+rm -fr %{buildroot}%{python_sitelib}/glance/tests
 
 # Drop old glance CLI it has been deprecated
 # and replaced glanceclient
@@ -301,6 +301,10 @@ fi
 %doc doc/build/html
 
 %changelog
+* Tue Jul 23 2013 John Bresnahan <jbresnah@redhat.com> 2013.2-0.6.b2
+- Do not log DEBUG by default
+- Do not distribute tests
+
 * Tue Jul 23 2013 Pádraig Brady <pbrady@redhat.com> 2013.2-0.5.b2
 - Update to Havana milestone 2
 - Depend on python-keystoneclient for auth_token middleware

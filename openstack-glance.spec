@@ -72,6 +72,7 @@ Requires:         python-crypto
 Requires:         pyxattr
 Requires:         python-swiftclient
 Requires:         python-cinderclient
+Requires:         python-keystoneclient
 Requires:         python-oslo-config
 
 #test deps: python-mox python-nose python-requests
@@ -291,6 +292,7 @@ fi
 %changelog
 * Tue Jul 23 2013 Pádraig Brady <pbrady@redhat.com> 2013.3-0.4.b2
 - Update to Havana milestone 2
+- Depend on python-keystoneclient for auth_token middleware
 
 * Fri Jun  7 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b1-3
 - reinstate EPEL specific patches

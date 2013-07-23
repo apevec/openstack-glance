@@ -1,6 +1,6 @@
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.5.b2%{?dist}
+Release:          0.6.b2%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
@@ -127,6 +127,13 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %build
 
 # Change the default config
+openstack-config --set etc/glance-api.conf DEFAULT debug False
+openstack-config --set etc/glance-api.conf DEFAULT verbose True
+openstack-config --set etc/glance-registry.conf DEFAULT debug False
+openstack-config --set etc/glance-registry.conf DEFAULT verbose True
+openstack-config --set etc/glance-scrubber.conf DEFAULT debug False
+openstack-config --set etc/glance-scrubber.conf DEFAULT verbose True
+
 openstack-config --set etc/glance-registry.conf DEFAULT sql_connection mysql://glance:glance@localhost/glance
 openstack-config --set etc/glance-api.conf DEFAULT sql_connection mysql://glance:glance@localhost/glance
 # Move authtoken configuration out of paste.ini

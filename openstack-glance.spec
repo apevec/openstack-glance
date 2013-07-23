@@ -1,6 +1,6 @@
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.4.b2%{?dist}
+Release:          0.5.b2%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
@@ -119,6 +119,10 @@ rm -rf glance.egg-info
 sed -i '/\/usr\/bin\/env python/d' glance/common/config.py glance/common/crypt.py glance/db/sqlalchemy/migrate_repo/manage.py
 # versioninfo is missing in f3 tarball
 echo %{version} > glance/versioninfo
+
+# Remove the requirements file so that pbr hooks don't add it
+# to distutils requiers_dist config
+rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %build
 
@@ -290,7 +294,7 @@ fi
 %doc doc/build/html
 
 %changelog
-* Tue Jul 23 2013 Pádraig Brady <pbrady@redhat.com> 2013.3-0.4.b2
+* Tue Jul 23 2013 Pádraig Brady <pbrady@redhat.com> 2013.2-0.5.b2
 - Update to Havana milestone 2
 - Depend on python-keystoneclient for auth_token middleware
 

@@ -1,12 +1,12 @@
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.6.b2%{?dist}
+Release:          0.7.b3%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/havana/havana-2/+download/glance-2013.2.b2.tar.gz
+Source0:          https://launchpad.net/glance/havana/havana-3/+download/glance-2013.2.b3.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -16,7 +16,7 @@ Source300:        openstack-glance-scrubber.upstart
 Source4:          openstack-glance.logrotate
 
 #
-# patches_base=2013.2.b2
+# patches_base=2013.2.b3
 #
 Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
 Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
@@ -106,8 +106,8 @@ and delivery services for virtual disk images.
 This package contains documentation files for glance.
 
 %prep
-%setup -q -n glance-%{version}.b2
-sed -i 's/%{version}.b2/%{version}/' PKG-INFO
+%setup -q -n glance-%{version}.b3
+sed -i 's/%{version}.b3/%{version}/' PKG-INFO
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
@@ -301,6 +301,9 @@ fi
 %doc doc/build/html
 
 %changelog
+* Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
+- Update to 2013.2.b3
+
 * Tue Jul 23 2013 John Bresnahan <jbresnah@redhat.com> 2013.2-0.6.b2
 - Do not log DEBUG by default
 - Do not distribute tests

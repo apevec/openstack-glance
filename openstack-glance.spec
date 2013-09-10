@@ -23,6 +23,7 @@ Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
 Patch0003: 0003-avoid-the-uneeded-dependency-on-Crypto.Random.patch
 Patch0004: 0004-Avoid-NULLs-in-crypto-padding.patch
 Patch0005: 0005-Remove-runtime-dep-on-python-pbr.patch
+Patch0006: 0006-Revert-use-oslo.sphinx-and-remove-local-copy-of-doc.patch
 
 BuildArch:        noarch
 BuildRequires:    python2-devel
@@ -115,6 +116,7 @@ sed -i 's/%{version}.b3/%{version}/' PKG-INFO
 %patch0003 -p1
 %patch0004 -p1
 %patch0005 -p1
+%patch0006 -p1
 
 
 # Remove bundled egg-info
@@ -309,10 +311,9 @@ fi
 
 %changelog
 * Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
-- Remove runtime dep on python pbr
-
-* Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
 - Update to 2013.2.b3
+- Remove runtime dep on python pbr
+- Revert use oslo.sphinx and remove local copy of doc
 
 * Tue Jul 23 2013 John Bresnahan <jbresnah@redhat.com> 2013.2-0.6.b2
 - Do not log DEBUG by default

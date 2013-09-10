@@ -22,6 +22,7 @@ Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
 Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
 Patch0003: 0003-avoid-the-uneeded-dependency-on-Crypto.Random.patch
 Patch0004: 0004-Avoid-NULLs-in-crypto-padding.patch
+Patch0005: 0005-Remove-runtime-dep-on-python-pbr.patch
 
 BuildArch:        noarch
 BuildRequires:    python2-devel
@@ -32,6 +33,7 @@ BuildRequires:    python-paste-deploy1.5
 BuildRequires:    python-routes1.12
 BuildRequires:    python-sqlalchemy0.7
 BuildRequires:    python-webob1.0
+BuildRequires:    python-pbr
 
 Requires(post):   chkconfig
 Requires(preun):  initscripts
@@ -112,6 +114,7 @@ sed -i 's/%{version}.b3/%{version}/' PKG-INFO
 %patch0002 -p1
 %patch0003 -p1
 %patch0004 -p1
+%patch0005 -p1
 
 
 # Remove bundled egg-info
@@ -119,6 +122,10 @@ rm -rf glance.egg-info
 sed -i '/\/usr\/bin\/env python/d' glance/common/config.py glance/common/crypt.py glance/db/sqlalchemy/migrate_repo/manage.py
 # versioninfo is missing in f3 tarball
 echo %{version} > glance/versioninfo
+
+sed -i '/setuptools_git/d' setup.py
+sed -i s/REDHATGLANCEVERSION/%{version}/ glance/version.py
+sed -i s/REDHATGLANCERELEASE/%{release}/ glance/version.py
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requiers_dist config
@@ -301,6 +308,9 @@ fi
 %doc doc/build/html
 
 %changelog
+* Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
+- Remove runtime dep on python pbr
+
 * Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
 - Update to 2013.2.b3
 

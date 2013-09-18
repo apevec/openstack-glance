@@ -1,6 +1,6 @@
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.7.b3%{?dist}
+Release:          0.8.b3%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System

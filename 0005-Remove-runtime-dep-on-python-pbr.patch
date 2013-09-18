@@ -1,28 +1,28 @@
-From e53ff3df70700ad9e2f7c5fcd3a79626aea70d9b Mon Sep 17 00:00:00 2001
+From 86be8bf127b13bd4f3dc7601d44c0ac41e0cdaa0 Mon Sep 17 00:00:00 2001
 From: John Bresnahan <jbresnah@redhat.com>
-Date: Mon, 9 Sep 2013 16:28:29 -1000
+Date: Wed, 18 Sep 2013 12:04:43 -1000
 Subject: [PATCH] Remove runtime dep on python pbr
 
 ---
- glance/version.py | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+ glance/version.py | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
 diff --git a/glance/version.py b/glance/version.py
-index d815183..861e104 100644
+index d815183..9e20ed0 100644
 --- a/glance/version.py
 +++ b/glance/version.py
-@@ -14,7 +14,31 @@
- #    License for the specific language governing permissions and limitations
+@@ -15,6 +15,31 @@
  #    under the License.
  
+ 
+-import pbr.version
 +GLANCE_VENDOR = "OpenStack Foundation"
 +GLANCE_PRODUCT = "OpenStack Glance"
 +GLANCE_PACKAGE = None  # OS distro package version suffix
  
--import pbr.version
-+loaded = False
- 
 -version_info = pbr.version.VersionInfo('glance')
++loaded = False
++
 +
 +class VersionInfo(object):
 +    release = "REDHATGLANCERELEASE"

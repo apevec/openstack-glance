@@ -1,3 +1,6 @@
+%global release_name havana
+%global milestone 3
+
 Name:             openstack-glance
 Version:          2013.2
 Release:          0.8.b3%{?dist}
@@ -6,7 +9,7 @@ Summary:          OpenStack Image Service
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/havana/havana-3/+download/glance-2013.2.b3.tar.gz
+Source0:          https://launchpad.net/glance/%{release_name}/%{release_name}-%{milestone}/+download/glance-%{version}.b%{milestone}.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -76,7 +79,7 @@ Requires:         pyxattr
 Requires:         python-swiftclient
 Requires:         python-cinderclient
 Requires:         python-keystoneclient
-Requires:         python-oslo-config
+Requires:         python-oslo-config >= 1:1.2.0
 
 #test deps: python-mox python-nose python-requests
 #test and optional store:
@@ -109,8 +112,8 @@ and delivery services for virtual disk images.
 This package contains documentation files for glance.
 
 %prep
-%setup -q -n glance-%{version}.b3
-sed -i 's/%{version}.b3/%{version}/' PKG-INFO
+%setup -q -n glance-%{version}.b%{milestone}
+sed -i 's/%{version}.b%{milestone}/%{version}/' PKG-INFO
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1

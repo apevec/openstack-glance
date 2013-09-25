@@ -20,7 +20,7 @@ suffix=scrubber
 prog=openstack-glance-$suffix
 exec="/usr/bin/glance-$suffix"
 user_config="/etc/glance/glance-$suffix.conf"
-distconfig="/usr/share/glance/glance-$suffix.conf"
+distconfig="/usr/share/glance/glance-$suffix-dist.conf"
 pidfile="/var/run/glance/glance-$suffix.pid"
 
 [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog

@@ -3,7 +3,7 @@
 
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.9.b%{milestone}%{?dist}
+Release:          0.10.b%{milestone}%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
@@ -273,9 +273,9 @@ fi
 %{_datadir}/glance/openstack-glance-api.upstart
 %{_datadir}/glance/openstack-glance-registry.upstart
 %{_datadir}/glance/openstack-glance-scrubber.upstart
-%{_datadir}/glance/glance-api-dist.conf
-%{_datadir}/glance/glance-registry-dist.conf
-%{_datadir}/glance/glance-scrubber-dist.conf
+%attr(0640, root, glance) %{_datadir}/glance/glance-api-dist.conf
+%attr(0640, root, glance) %{_datadir}/glance/glance-registry-dist.conf
+%attr(0640, root, glance) %{_datadir}/glance/glance-scrubber-dist.conf
 
 %{_mandir}/man1/glance*.1.gz
 %dir %{_sysconfdir}/glance
@@ -302,7 +302,13 @@ fi
 %doc doc/build/html
 
 %changelog
-* Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2.b3
+* Wed Sep 25 2013 Pádraig Brady <pbrady@redhat.com) 2013.2-0.10.b3
+- Fix up dist.conf issues
+
+* Thu Sep 19 2013 John Bresnahan <jbresnah@redhat.com> 2013.2-0.8.b3
+- Split distribution config to /usr/share/glance/glance*-dist.conf
+
+* Mon Sep  9 2013 John Bresnahan <jbresnah@redhat.com> 2013.2-0.7.b3
 - Update to 2013.2.b3
 - Remove runtime dep on python pbr
 - Revert use oslo.sphinx and remove local copy of doc

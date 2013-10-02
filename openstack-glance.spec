@@ -190,10 +190,10 @@ install -d -m 755 %{buildroot}%{_sharedstatedir}/glance/images
 # Config file
 install -p -D -m 640 etc/glance-api.conf %{buildroot}%{_sysconfdir}/glance/glance-api.conf
 install -p -D -m 640 %{SOURCE5} %{buildroot}%{_datadir}/glance/glance-api-dist.conf
-install -p -D -m 640 etc/glance-api-paste.ini %{buildroot}%{_sysconfdir}/glance/glance-api-paste.ini
+install -p -D -m 640 etc/glance-api-paste.ini %{buildroot}%{_datadir}/glance/glance-api-dist-paste.ini
 install -p -D -m 640 etc/glance-registry.conf %{buildroot}%{_sysconfdir}/glance/glance-registry.conf
 install -p -D -m 640 %{SOURCE6} %{buildroot}%{_datadir}/glance/glance-registry-dist.conf
-install -p -D -m 640 etc/glance-registry-paste.ini %{buildroot}%{_sysconfdir}/glance/glance-registry-paste.ini
+install -p -D -m 640 etc/glance-registry-paste.ini %{buildroot}%{_datadir}/glance/glance-registry-dist-paste.ini
 install -p -D -m 640 etc/glance-cache.conf %{buildroot}%{_sysconfdir}/glance/glance-cache.conf
 install -p -D -m 640 %{SOURCE7} %{buildroot}%{_datadir}/glance/glance-cache-dist.conf
 install -p -D -m 640 etc/glance-scrubber.conf %{buildroot}%{_sysconfdir}/glance/glance-scrubber.conf
@@ -215,6 +215,7 @@ for svc in api registry; do
   openstack-config --set %{buildroot}%{_datadir}/glance/glance-$svc-dist.conf keystone_authtoken auth_host 127.0.0.1
   openstack-config --set %{buildroot}%{_datadir}/glance/glance-$svc-dist.conf keystone_authtoken auth_port 35357
   openstack-config --set %{buildroot}%{_datadir}/glance/glance-$svc-dist.conf keystone_authtoken auth_protocol http
+  openstack-config --set %{buildroot}%{_datadir}/glance/glance-$svc-dist.conf paste_deploy config_file %{_datadir}/glance/glance-$svc-dist-paste.ini
 done
 openstack-config --set %{buildroot}%{_datadir}/glance/glance-cache-dist.conf DEFAULT image_cache_dir %{_localstatedir}/lib/glance/image-cache/
 openstack-config --set %{buildroot}%{_datadir}/glance/glance-cache-dist.conf DEFAULT log_file %{_localstatedir}/log/glance/image-cache.log
@@ -293,13 +294,13 @@ fi
 %attr(0640, root, glance) %{_datadir}/glance/glance-registry-dist.conf
 %attr(0640, root, glance) %{_datadir}/glance/glance-cache-dist.conf
 %attr(0640, root, glance) %{_datadir}/glance/glance-scrubber-dist.conf
+%attr(-, root, glance) %{_datadir}/glance/glance-api-dist-paste.ini
+%attr(-, root, glance) %{_datadir}/glance/glance-registry-dist-paste.ini
 
 %{_mandir}/man1/glance*.1.gz
 %dir %{_sysconfdir}/glance
 %config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-api.conf
-%config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-api-paste.ini
 %config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-registry.conf
-%config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-registry-paste.ini
 %config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-cache.conf
 %config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/glance-scrubber.conf
 %config(noreplace) %attr(-, root, glance) %{_sysconfdir}/glance/policy.json

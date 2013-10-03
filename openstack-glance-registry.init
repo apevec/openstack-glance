@@ -20,7 +20,6 @@ suffix=registry
 prog=openstack-glance-$suffix
 exec="/usr/bin/glance-$suffix"
 config="/etc/glance/glance-$suffix.conf"
-distconfig="/usr/share/glance/glance-$suffix-dist.conf"
 pidfile="/var/run/glance/glance-$suffix.pid"
 
 [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
@@ -31,7 +30,7 @@ start() {
     [ -x $exec ] || exit 5
     [ -f $config ] || exit 6
     echo -n $"Starting $prog: "
-    daemon --user glance --pidfile $pidfile "$exec --config-file $distconfig --config-file $config &>/dev/null & echo \$! > $pidfile"
+    daemon --user glance --pidfile $pidfile "$exec &>/dev/null & echo \$! > $pidfile"
     retval=$?
     echo
     [ $retval -eq 0 ] && touch $lockfile

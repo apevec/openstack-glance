@@ -1,4 +1,4 @@
-From 0ff3e09895e120dc2e1b4f3b4f36e0647551ddd0 Mon Sep 17 00:00:00 2001
+From 6b96fb8b7c8620c7c8794702d94bb6ebc1351b08 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?P=C3=A1draig=20Brady?= <P@draigBrady.com>
 Date: Tue, 23 Jul 2013 12:18:26 +0100
 Subject: [PATCH] Use updated parallel install versions of epel package
@@ -11,8 +11,8 @@ Delve into pkg_resources a little to get it to modify sys.path,
 so that our parallel installed egg takes precedence over the
 system default module versions.
 ---
- glance/__init__.py | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ glance/__init__.py |   32 ++++++++++++++++++++++++++++++++
+ 1 files changed, 32 insertions(+), 0 deletions(-)
 
 diff --git a/glance/__init__.py b/glance/__init__.py
 index b606957..dd75292 100644

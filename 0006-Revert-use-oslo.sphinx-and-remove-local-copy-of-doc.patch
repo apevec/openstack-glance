@@ -1,12 +1,12 @@
-From 645c11f79ae15bef1b936aefae53357b33df152d Mon Sep 17 00:00:00 2001
+From 5c4ad24ce5fbcaa5a16d9c3d0ba24add00bb7bb4 Mon Sep 17 00:00:00 2001
 From: John Bresnahan <jbresnah@redhat.com>
-Date: Wed, 18 Sep 2013 12:05:45 -1000
+Date: Wed, 18 Sep 2013 19:19:21 -1000
 Subject: [PATCH] Revert use oslo.sphinx and remove local copy of doc
 
 ---
- doc/source/conf.py    | 1 -
- test-requirements.txt | 3 ---
- 2 files changed, 4 deletions(-)
+ doc/source/conf.py    |    1 -
+ test-requirements.txt |    3 ---
+ 2 files changed, 0 insertions(+), 4 deletions(-)
 
 diff --git a/doc/source/conf.py b/doc/source/conf.py
 index 8ceeb43..d1eb08e 100644

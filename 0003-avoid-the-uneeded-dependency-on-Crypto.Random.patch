@@ -1,4 +1,4 @@
-From 29c4a808f68be3d4965a3a4c96481d9e1065569f Mon Sep 17 00:00:00 2001
+From 4402116b8113963367280165b14757eb8ebf8d22 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?P=C3=A1draig=20Brady?= <P@draigBrady.com>
 Date: Tue, 23 Jul 2013 12:19:45 +0100
 Subject: [PATCH] avoid the uneeded dependency on Crypto.Random
@@ -12,8 +12,8 @@ but I'm leaving that as is for now:
 http://www.codekoala.com/blog/2009/aes-encryption-python-using-pycrypto/#comment-25921785
 http://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
 ---
- glance/common/crypt.py | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ glance/common/crypt.py |    8 ++------
+ 1 files changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/glance/common/crypt.py b/glance/common/crypt.py
 index ee5f2dd..ef6496b 100644

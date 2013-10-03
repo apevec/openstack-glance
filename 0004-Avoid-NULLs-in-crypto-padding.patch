@@ -1,4 +1,4 @@
-From 80ae40611ddbda2d4a98bc3b20bfa0424024b329 Mon Sep 17 00:00:00 2001
+From 0a2e6345f7fa3a26919eea939e79d0424c8a0249 Mon Sep 17 00:00:00 2001
 From: Eoghan Glynn <eglynn@redhat.com>
 Date: Wed, 30 Jan 2013 17:43:52 +0000
 Subject: [PATCH] Avoid NULLs in crypto padding.
@@ -17,8 +17,8 @@ Reviewed-on: https://code.engineering.redhat.com/gerrit/2809
 Reviewed-by: Nikola Dipanov <ndipanov@redhat.com>
 Tested-by: Nikola Dipanov <ndipanov@redhat.com>
 ---
- glance/common/crypt.py | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ glance/common/crypt.py |    7 ++++++-
+ 1 files changed, 6 insertions(+), 1 deletions(-)
 
 diff --git a/glance/common/crypt.py b/glance/common/crypt.py
 index ef6496b..3874de7 100644

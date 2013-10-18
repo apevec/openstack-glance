@@ -2,13 +2,13 @@
 
 Name:             openstack-glance
 Version:          2013.2
-Release:          0.12.rc1%{?dist}
+Release:          1%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/%{release_name}/%{release_name}-rc1/+download/glance-%{version}.rc1.tar.gz
+Source0:          https://launchpad.net/glance/%{release_name}/%{release_name}-rc1/+download/glance-%{version}.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -23,7 +23,7 @@ Source7:          glance-cache-dist.conf
 Source8:          glance-scrubber-dist.conf
 
 #
-# patches_base=2013.2.rc1
+# patches_base=2013.2
 #
 Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
 Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
@@ -117,8 +117,8 @@ and delivery services for virtual disk images.
 This package contains documentation files for glance.
 
 %prep
-%setup -q -n glance-%{version}.rc1
-sed -i 's/%{version}.rc1/%{version}/' PKG-INFO
+%setup -q -n glance-%{version}
+
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
@@ -338,6 +338,9 @@ fi
 %doc doc/build/html
 
 %changelog
+* Fri Oct 18 2013 Pádraig Brady <pbrady@redhat.com> 2013.2-1
+- Update to Havana GA
+
 * Thu Oct 03 2013 Pádraig Brady <pbrady@redhat.com> 2013.2-0.12.rc1
 - Update to 2013.2.rc1
 - Fixup various config file issues

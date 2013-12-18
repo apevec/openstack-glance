@@ -1,14 +1,14 @@
 %global release_name havana
 
 Name:             openstack-glance
-Version:          2013.2
+Version:          2013.2.1
 Release:          1%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/%{release_name}/%{release_name}-rc1/+download/glance-%{version}.tar.gz
+Source0:          https://launchpad.net/glance/%{release_name}/%{version}/+download/glance-%{version}.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -23,7 +23,7 @@ Source7:          glance-cache-dist.conf
 Source8:          glance-scrubber-dist.conf
 
 #
-# patches_base=2013.2
+# patches_base=2013.2.1
 #
 Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
 Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
@@ -338,6 +338,9 @@ fi
 %doc doc/build/html
 
 %changelog
+* Wed Dec 18 2013 Pádraig Brady <pbrady@redhat.com> 2013.2.1-1
+- Update to Havana stable release 2013.2.1
+
 * Fri Oct 18 2013 Pádraig Brady <pbrady@redhat.com> 2013.2-1
 - Update to Havana GA
 

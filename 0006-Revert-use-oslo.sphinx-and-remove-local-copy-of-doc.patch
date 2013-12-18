@@ -1,4 +1,4 @@
-From 695366fa83562b5ba3db8e0204fe1d26603b1630 Mon Sep 17 00:00:00 2001
+From 79fbd448c874af8d3c9c921dd5e0a4e239badfe7 Mon Sep 17 00:00:00 2001
 From: John Bresnahan <jbresnah@redhat.com>
 Date: Wed, 18 Sep 2013 19:19:21 -1000
 Subject: [PATCH] Revert use oslo.sphinx and remove local copy of doc
@@ -21,7 +21,7 @@ index 8ceeb43..d1eb08e 100644
  
  # Add any paths that contain templates here, relative to this directory.
 diff --git a/test-requirements.txt b/test-requirements.txt
-index 2273169..751363d 100644
+index c190bfc..a72bfdb 100644
 --- a/test-requirements.txt
 +++ b/test-requirements.txt
 @@ -27,6 +27,3 @@ psycopg2

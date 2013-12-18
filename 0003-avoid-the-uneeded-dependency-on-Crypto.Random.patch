@@ -1,4 +1,4 @@
-From 8805be90557ec09eefe85b4084c343601ac5d648 Mon Sep 17 00:00:00 2001
+From 87396a965793986c605e45909dfb4e5cf280b461 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?P=C3=A1draig=20Brady?= <P@draigBrady.com>
 Date: Tue, 23 Jul 2013 12:19:45 +0100
 Subject: [PATCH] avoid the uneeded dependency on Crypto.Random

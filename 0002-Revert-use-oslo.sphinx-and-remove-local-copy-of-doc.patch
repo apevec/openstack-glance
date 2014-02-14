@@ -1,19 +1,19 @@
-From 79fbd448c874af8d3c9c921dd5e0a4e239badfe7 Mon Sep 17 00:00:00 2001
+From 7aa263bca163ee806dffcd24ce0b75a6f5c5eefc Mon Sep 17 00:00:00 2001
 From: John Bresnahan <jbresnah@redhat.com>
 Date: Wed, 18 Sep 2013 19:19:21 -1000
 Subject: [PATCH] Revert use oslo.sphinx and remove local copy of doc
 
 ---
- doc/source/conf.py    |    1 -
- test-requirements.txt |    3 ---
- 2 files changed, 0 insertions(+), 4 deletions(-)
+ doc/source/conf.py    | 1 -
+ test-requirements.txt | 3 ---
+ 2 files changed, 4 deletions(-)
 
 diff --git a/doc/source/conf.py b/doc/source/conf.py
-index 8ceeb43..d1eb08e 100644
+index 04f4ebe..b8d2ac8 100644
 --- a/doc/source/conf.py
 +++ b/doc/source/conf.py
-@@ -46,7 +46,6 @@ extensions = ['sphinx.ext.coverage',
-               'sphinx.ext.ifconfig',
+@@ -47,7 +47,6 @@ extensions = ['sphinx.ext.coverage',
+               'sphinx.ext.intersphinx',
                'sphinx.ext.pngmath',
                'sphinx.ext.graphviz',
 -              'oslo.sphinx',

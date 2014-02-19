@@ -1,11 +1,11 @@
-From a641471b59ad0dde22d4d5f83ffb329c3ea0b39a Mon Sep 17 00:00:00 2001
+From d9e9fe86086922f66c9b578f44f0a3c0a2a91028 Mon Sep 17 00:00:00 2001
 From: John Bresnahan <jbresnah@redhat.com>
 Date: Wed, 18 Sep 2013 19:18:43 -1000
 Subject: [PATCH] Remove runtime dep on python pbr
 
 ---
- glance/version.py | 29 +++++++++++++++++++++++++++--
- 1 file changed, 27 insertions(+), 2 deletions(-)
+ glance/version.py |   29 +++++++++++++++++++++++++++--
+ 1 files changed, 27 insertions(+), 2 deletions(-)
 
 diff --git a/glance/version.py b/glance/version.py
 index d815183..9e20ed0 100644

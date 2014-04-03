@@ -1,14 +1,17 @@
 %global release_name havana
+%global project glance
+Source0:        http://tarballs.openstack.org/%{project}/%{project}-stable-%{release_name}.tar.gz
+%global devtag %(tar ztf %{SOURCE0} 2>/dev/null | head -1 | rev | cut -d. -f2 | rev)
+%global devrel %(tar ztf %{SOURCE0} 2>/dev/null | head -1 | rev | cut -d. -f3-5 | cut -d- -f1 | rev)
 
 Name:             openstack-glance
-Version:          2013.2.2
-Release:          2%{?dist}
+Version:          %{devrel}
+Release:          0.1.%{devtag}%{?dist}
 Summary:          OpenStack Image Service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              http://glance.openstack.org
-Source0:          https://launchpad.net/glance/havana/%{version}/+download/glance-%{version}.tar.gz
 Source1:          openstack-glance-api.init
 Source100:        openstack-glance-api.upstart
 Source2:          openstack-glance-registry.init
@@ -23,7 +26,7 @@ Source7:          glance-cache-dist.conf
 Source8:          glance-scrubber-dist.conf
 
 #
-# patches_base=2013.2.2
+# patches_base=gerrit/stable/havana
 #
 Patch0001: 0001-Don-t-access-the-net-while-building-docs.patch
 Patch0002: 0002-Use-updated-parallel-install-versions-of-epel-packag.patch
@@ -117,8 +120,8 @@ and delivery services for virtual disk images.
 This package contains documentation files for glance.
 
 %prep
-%setup -q -n glance-%{version}
-
+%setup -q -c -T
+tar --strip-components=1 -zxf %{SOURCE0}
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
@@ -137,6 +140,7 @@ sed -i '/setuptools_git/d' setup.py
 sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
 sed -i s/REDHATGLANCEVERSION/%{version}/ glance/version.py
 sed -i s/REDHATGLANCERELEASE/%{release}/ glance/version.py
+sed -i 's/^Version: .*/Version: %{version}/' PKG-INFO
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requiers_dist config
